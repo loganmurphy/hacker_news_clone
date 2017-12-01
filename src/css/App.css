@@ -352,10 +352,10 @@ u {
 @media screen and (min-width: 413px) and (max-width: 414px){
   .navspan {
     margin-top: -.05rem;
-    margin-left: -16.05rem;
+    margin-left: -16.15rem;
     background-color: rgb(255, 101, 0);
   }
-  .login button {
-    margin-left: -8rem;
+  .login {
+    margin-left: -4rem;
   }
 }
