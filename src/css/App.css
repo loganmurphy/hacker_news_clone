@@ -345,17 +345,17 @@ u {
     background-color: rgb(255, 101, 0);
   }
   .login button {
-    margin-left: -4rem;
+    margin-left: -3rem;
   }
 }
 
 @media screen and (min-width: 413px) and (max-width: 414px){
   .navspan {
     margin-top: -.05rem;
-    margin-left: -16.5rem;
+    margin-left: -16.25rem;
     background-color: rgb(255, 101, 0);
   }
   .login button {
-    margin-left: -3rem;
+    margin-left: -4rem;
   }
 }
