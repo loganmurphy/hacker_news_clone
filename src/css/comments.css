@@ -1,0 +1,88 @@
+.comment_div {
+    margin-top: 0rem;
+    /*padding: 1rem 1rem 1rem 1.75rem;*/
+    background-color: #f6f7f0;
+    overflow-y: scroll;
+    /*color: #828282;*/
+}
+
+textarea {
+  height: 5rem;
+  width: 60%;
+  margin-left: 1.5rem;
+}
+
+.submit_buttom {
+  height: 1.5rem;
+  width: 6rem;
+  margin-top: 1rem;
+  margin-left: 1.5rem;
+  border-radius: 5px;
+}
+
+
+ul  {
+  margin-top: 0;
+  margin-left: -1rem;
+  padding: 1rem 1rem 1rem 1.75rem;
+  overflow-y: scroll;
+  background-color: #f6f7f0;
+  margin-left: .035rem;
+}
+
+.comments {
+  height: 100%;
+  color: gray;
+  font-size: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+ul li {
+  list-style: none;
+}
+
+li p {
+  color: black;
+  margin-top: .65rem;
+  margin-left: 1.25rem;
+  font-size: 1.15rem;
+}
+
+ul li p {
+  margin-top: -.05rem;
+  margin-left: -.05rem;
+}
+
+ul li div {
+  color: black;
+  font-size: 1rem;
+  margin-top: 0.25rem;
+  margin-left: 1.25rem;
+}
+
+p button {
+  background-color: transparent;
+  border-style: none;
+  font-size: .95rem;
+  color: gray;
+
+}
+
+h1 a{
+  font-size: 1.25rem;
+  color: black;
+  text-decoration: none;
+}
+
+.gray {
+  color: gray;
+  margin-top: -0.75rem;
+  margin-left: 1.25rem;
+}
+
+.gray2 {
+  color: gray;
+  margin-top: -1.25rem;
+  margin-left: 1.25rem;
+}
