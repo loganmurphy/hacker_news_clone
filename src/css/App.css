@@ -212,7 +212,7 @@ u {
   color: white;
 }
 
-@media screen and (min-width: 760px) and (max-width: 1000px){
+@media screen and (min-width: 760px) and (max-width: 100px){
   ol {
     margin-top: 0rem;
   }
@@ -311,5 +311,18 @@ u {
     align-items: flex-end;
     margin-top: -3rem;
     margin-left: -36rem;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 2000px){
+  .navspan {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    flex-flow: wrap;
+    flex-direction: row;
+    align-items: flex-end;
+    margin-top: -3rem;
+    margin-left: -69rem;
   }
 }
