@@ -331,16 +331,25 @@ u {
   .navspan {
     margin-left: -13rem;
   }
+  .login button {
+    margin-left: -2rem;
+  }
 }
 
 @media screen and (min-width: 319px) and (max-width: 320px){
   .navspan {
     margin-left: -10.5;
   }
+  .login button {
+    margin-left: -2rem;
+  }
 }
 
 @media screen and (min-width: 413px) and (max-width: 414px){
   .navspan {
     margin-left: -14.5rem;
+  }
+  .login button {
+    margin-left: -2rem;
   }
 }
