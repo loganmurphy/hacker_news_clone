@@ -329,18 +329,18 @@ u {
 
 @media screen and (min-width: 374px) and (max-width: 375px){
   .navspan {
-    margin-left: -13.25rem;
+    margin-left: -13rem;
   }
 }
 
 @media screen and (min-width: 319px) and (max-width: 320px){
   .navspan {
-    margin-left: -11.25;
+    margin-left: -11;
   }
 }
 
 @media screen and (min-width: 413px) and (max-width: 414px){
   .navspan {
-    margin-left: -14.25rem;
+    margin-left: -14.5rem;
   }
 }
