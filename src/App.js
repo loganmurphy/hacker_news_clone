@@ -14,6 +14,10 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import AppBar from 'material-ui/AppBar';
 import Menu, { MenuItem } from 'material-ui/Menu';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import FlatButton from 'material-ui/FlatButton';
+import IconButton from 'material-ui/IconButton';
+import IconMenu from 'material-ui/IconMenu';
 
 import {BrowserRouter, Route, Link, Switch}
   from 'react-router-dom';
@@ -68,14 +72,12 @@ class App extends Component {
           logged_in: true
           }
         });
-        //store.dispatch(storeData({user: this.state.user}))
         this.props.login(User.user.uid);
       })
       .catch(function (e) {
         console.log(e);
       });
       console.log(user)
-      // this.props.history.push("/news")
   }
 
   page_setter(page){
@@ -92,9 +94,9 @@ class App extends Component {
   render() {
     let login_or_user;
     if(this.state.user.logged_in){
-      login_or_user = <p className='login_alt'>{this.state.user.user_name}</p>;
+      login_or_user = <button className='login_alt' onClick={()=>{this.login()}}>{this.state.user.user_name}</button>;
     } else {
-      login_or_user = 'login';
+      login_or_user = <button className='login' onClick={()=>{this.login()}}>login</button>;
     }
 
     let new_stories;
@@ -110,9 +112,9 @@ class App extends Component {
       new_stories = <Link className='navitem' to='/new' onClick={()=> this.page_setter('/new')}>new</Link>;
     }
     if(this.state.current_page === '/newcomments'){
-      new_comments = <Link className='navitem white_select' id='not_mobile_content' to='/newcomments' onClick={()=> this.page_setter('/newcomments')}>comments</Link>;
+      new_comments = <Link className='navitem white_select' to='/newcomments' onClick={()=> this.page_setter('/newcomments')}>comments</Link>;
     } else {
-      new_comments = <Link className='navitem' id='not_mobile_content' to='/newcomments' onClick={()=> this.page_setter('/newcomments')}>comments</Link>;
+      new_comments = <Link className='navitem' to='/newcomments' onClick={()=> this.page_setter('/newcomments')}>comments</Link>;
     }
     if(this.state.current_page === '/show'){
       show = <Link className='navitem white_select' to='/show' onClick={()=> this.page_setter('/show')}>show</Link>;
@@ -130,28 +132,41 @@ class App extends Component {
       jobs = <Link className='navitem' to='/jobs' onClick={()=> this.page_setter('/jobs')}>jobs</Link>;
     }
     if(this.state.current_page === '/submit'){
-      submit = <Link className='navitem white_select' id='not_mobile_content' to='/submit' onClick={()=> this.page_setter('/submit')}>submit</Link>
+      submit = <Link className='navitem white_select' to='/submit' onClick={()=> this.page_setter('/submit')}>submit</Link>
     } else {
-      submit = <Link className='navitem' id='not_mobile_content' to='/submit' onClick={()=> this.page_setter('/submit')}>submit</Link>;
+      submit = <Link className='navitem' to='/submit' onClick={()=> this.page_setter('/submit')}>submit</Link>;
     }
+    let dropdown = <Menu><MenuItem>{new_stories}</MenuItem><MenuItem>{new_comments}</MenuItem><MenuItem>{show}</MenuItem><MenuItem>{ask}</MenuItem><MenuItem>{jobs}</MenuItem><MenuItem>{submit}</MenuItem></Menu>;
 
     return (
       <Provider store={store}>
         <MuiThemeProvider muiTheme={theme}>
           <BrowserRouter>
             <div className='contents'>
-              <AppBar className='title' title={<Link className='title' to='/'>Hacker News</Link>} iconElementLeft={<button id='logo'></button>}>
-                <Menu  id="menu-appbar">
-                  <MenuItem><button className='login' onClick={()=> this.login()}>{login_or_user}</button></MenuItem>
-                  <span className='navspan'>
-                  {new_stories}  |
-                  {new_comments} <p id='not_mobile_content' className='nav_divider'>|</p>
-                  {show}  |
-                  {ask}  |
-                  {jobs} <p id='not_mobile_content' className='nav_divider'>|</p>
-                  {submit}
+              <AppBar iconElementRight={
+                <IconMenu iconButtonElement={<IconButton className='orange'><MoreVertIcon /></IconButton>}
+                  targetOrigin={{horizontal: 'right', vertical: 'top'}}
+                  anchorOrigin={{horizontal: 'right', vertical: 'top'}}>
+                  <MenuItem><Link className='dropdown_link' to='/new'>new</Link></MenuItem>
+                  <MenuItem><Link className='dropdown_link' to='/newcomments'>comments</Link></MenuItem>
+                  <MenuItem><Link className='dropdown_link' to='/show'>show</Link></MenuItem>
+                  <MenuItem><Link className='dropdown_link' to='/ask'>ask</Link></MenuItem>
+                  <MenuItem><Link className='dropdown_link' to='/jobs'>jobs</Link></MenuItem>
+                  <MenuItem><Link className='dropdown_link' to='/submit'>submit</Link></MenuItem>
+                </IconMenu>}
+                  title={<div className="navTitle">
+                    <Link className='title' to='/' onClick={()=> this.page_setter('/')}>Hacker News</Link>
+                    <span className="navSpan">
+                    {new_stories}  |
+                    {new_comments} |
+                    {show}  |
+                    {ask} |
+                    {jobs} |
+                    {submit}
+                    {login_or_user}
                   </span>
-                </Menu>
+                  </div>
+                  } iconElementLeft={<button id='logo'></button>}>
               </AppBar>
                 <Switch>
                   <Route exact path='/' component={News} />
@@ -184,5 +199,3 @@ function mapDispatch (dispatch) {
 
 var ConnectedApp = connect(mapProps, mapDispatch)(App);
 export default ConnectedApp;
-
-// export default App;
