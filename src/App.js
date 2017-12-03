@@ -188,7 +188,6 @@ class App extends Component {
 function mapProps (state) {
   return {};
 }
-
 function mapDispatch (dispatch) {
   return {
     login: function (id) {
