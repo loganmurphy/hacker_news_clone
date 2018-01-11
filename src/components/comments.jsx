@@ -2,7 +2,6 @@ import React from 'react';
 import Core from '../core/index';
 
 import '../css/comments.css';
-import {Link} from 'react-router-dom';
 
 import axios from 'axios'
 
@@ -29,13 +28,13 @@ class Comments extends Core{
       //   siblings: []
       // }
     }
-
   }
 
   db_check(){
     setTimeout(()=>{
       let pathname = this.props.history.location.pathname;
       let id = Number(pathname.split('').splice(10).join(''));
+      console.log('pathname and id are here', pathname, id);
 
       database.ref('comments/' + User.user.uid + '/' +id)
         .once('value')
@@ -196,12 +195,14 @@ class Comments extends Core{
     } else {
       comments = 'discuss';
     }
-
+// {'/comments/' +id}
+// {this.state.article.url}
+console.log('checkout current state here', this.state.article, typeof this.state.article.url);
     return(
 
       <div className='comment_div'>
         <form onSubmit={event => this.handle_submit(event)}>
-          <h1 className='comments_h1'><button id='arrow'></button><Link to={this.state.article.url}>{this.state.article.title}</Link></h1>
+          <h1 className='comments_h1'><button id='arrow'></button><a href={this.state.article.url}>{this.state.article.title}</a></h1>
           <p className='gray' id='not_mobile_content'>
             {this.state.article.score} points {this.state.article.by} {this.state.article.time} |<button>hide</button>
             |<button>past</button>|<button>web</button>|<button>{comments}</button>
